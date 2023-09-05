@@ -1,0 +1,3 @@
+<section>
+{{ count($roles) }}
+</section>

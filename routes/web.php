@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\Admin\SaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
     Route::get('statuses', [StatusController::class, 'index'])->name('status.index');
     
     Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
+
+    Route::prefix('sales')->group(function () {
+        Route::get('index', [SaleController::class, 'index'])->name('sales.index');
+    });
 });
 
 require __DIR__.'/auth.php';
