@@ -17,20 +17,20 @@
                         </a>
                     </div>
 
-                    <a href="{{ route('sales.create') }}" class="dashboard font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    <a href="{{ route('productTypes.create') }}" class="dashboard font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                         {{ __('New') }}
                     </a>
 
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        @if(count($sales) > 0)
-                            @foreach($sales as $sale)
+                        @if(isset($productTypes))
+                            @foreach($productTypes as $type)
                                 <div>
-                                    {{ $sale }}
+                                    {{ $type->name }}
                                 </div>
                             @endforeach
                         @else
                             <div>
-                                No Sales records, create new!
+                                No Product Types, create some!
                             </div>
                         @endif
                     </div>

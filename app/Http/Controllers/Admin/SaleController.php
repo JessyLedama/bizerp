@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserType;
+use App\Models\User;
 
 class SaleController extends Controller
 {
@@ -23,7 +25,11 @@ class SaleController extends Controller
      */
     public function create()
     {
-        return view('admin.modules.sales.create');
+        $customerType = UserType::where('name', 'Customer')->first();
+
+        $customers = User::where('typeId', $customerType->id)->get();
+
+        return view('admin.modules.sales.create', compact('customers'));
     }
 
     /**

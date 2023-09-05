@@ -6,6 +6,8 @@ use App\Http\Controllers\UserTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\Admin\SaleController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +43,31 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
     
     Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
 
+    // SALES
     Route::prefix('sales')->group(function () {
         Route::get('index', [SaleController::class, 'index'])->name('sales.index');
+
+        Route::get('create', [SaleController::class, 'create'])->name('sales.create');
+
+        Route::get('store', [SaleController::class, 'store'])->name('sales.store');
+    });
+
+    // PRODUCTS
+    Route::prefix('products')->group(function () {
+        Route::get('index', [ProductController::class, 'index'])->name('products.index');
+
+        Route::get('create', [ProductController::class, 'create'])->name('products.create');
+
+        Route::post('store', [ProductController::class, 'store'])->name('products.store');
+    });
+
+    // PRODUCT TYPEs
+    Route::prefix('product-types')->group(function () {
+        Route::get('index', [ProductTypeController::class, 'index'])->name('productTypes.index');
+
+        Route::get('create', [ProductTypeController::class, 'create'])->name('productTypes.create');
+
+        Route::post('store', [ProductTypeController::class, 'store'])->name('productTypes.store');
     });
 });
 
