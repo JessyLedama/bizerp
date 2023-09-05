@@ -1,0 +1,16 @@
+.dashboard {
+    padding: 10px 0 10px 10px;
+}
+
+.nav-headings {
+    display: flex;
+    padding: 10px 0 10px 10px;
+    flex-direction: row;
+}
+
+/* Media Queries for mobile view */
+@media (max-width: 800px) {
+    .nav-headings {
+      flex-direction: column;
+    }
+  }
