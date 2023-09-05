@@ -25,7 +25,7 @@ class StatusSeeder extends Seeder
 
         $statuses = Status::all();
 
-        if(count($statuses) < 1)
+        if(count($statuses) == 0)
         {
             foreach($statusData as $status)
             {

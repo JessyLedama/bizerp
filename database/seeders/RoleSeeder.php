@@ -25,7 +25,7 @@ class RoleSeeder extends Seeder
 
         $roles = Role::all();
 
-        if(empty($roles))
+        if(count($roles) == 0)
         {
             foreach($rolesData as $role)
             {

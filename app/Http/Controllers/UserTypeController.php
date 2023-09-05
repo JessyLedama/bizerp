@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserType;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserTypeController extends Controller
 {
@@ -12,7 +13,19 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        //
+        $userTypes = UserType::all();
+
+        return view('admin.userTypes.index', compact('userTypes'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function users()
+    {
+        $users = User::all();
+
+        return view('admin.users.index', compact('users'));
     }
 
     /**

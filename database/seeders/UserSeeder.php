@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
                 'phone' => '0712345678',
                 'identificationNumber' => '22212019',
                 'kraPin' => 'hwhdhowodwidwohdwdhi',
-                'typeId' => '',
-                'roleId' => '',
-                'statusId' => '',
+                'typeId' => '3',
+                'roleId' => '1',
+                'status' => '1',
                 'photo' => '/public/images/user.png',
                 'password' => Hash::make('password'),
             ],
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
 
         $users = User::all();
 
-        if(empty($users))
+        if(count($users) == 0)
         {
             foreach($usersData as $user)
             {

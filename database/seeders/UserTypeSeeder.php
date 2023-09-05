@@ -29,7 +29,7 @@ class UserTypeSeeder extends Seeder
 
         $userTypes = UserType::all();
 
-        if(count($userTypes) < 1)
+        if(count($userTypes) == 0)
         {
             foreach($userTypeData as $userType)
             {

@@ -37,4 +37,6 @@ Route::get('roles', [RoleController::class, 'index'])->name('role.index');
 
 Route::get('statuses', [StatusController::class, 'index'])->name('status.index');
 
+Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
+
 require __DIR__.'/auth.php';
