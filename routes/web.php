@@ -31,12 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('user-types', [UserTypeController::class, 'index'])->name('userType.index');
+Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
+    Route::get('user-types', [UserTypeController::class, 'index'])->name('userType.index');
 
-Route::get('roles', [RoleController::class, 'index'])->name('role.index');
-
-Route::get('statuses', [StatusController::class, 'index'])->name('status.index');
-
-Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
+    Route::get('roles', [RoleController::class, 'index'])->name('role.index');
+    
+    Route::get('statuses', [StatusController::class, 'index'])->name('status.index');
+    
+    Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
+});
 
 require __DIR__.'/auth.php';
