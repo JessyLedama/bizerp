@@ -19,7 +19,7 @@
                         $urlName = $urlData[3];
                     }
                     elseif(count($urlData) > 5){
-                        $urlName = $urlData[4];
+                        $urlName = $urlData[count($urlData) - 2];
                     }
                     
                     // dd($urlData[4]);

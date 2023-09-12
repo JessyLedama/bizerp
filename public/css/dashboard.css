@@ -12,6 +12,26 @@
     padding: 0 10px 0 0px;
 }
 
+.data-container{
+    padding: 30px;
+}
+
+.new-record{
+    border: 1px solid;
+    padding: 10px;
+    margin: 25px 0 0 25px;
+    border-radius: 15px;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+}
+
+.thead {
+    border-bottom: 1px solid;
+}
+
 /* Media Queries for mobile view */
 @media (max-width: 800px) {
     .nav-headings {

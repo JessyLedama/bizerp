@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.settings.company.create');
     }
 
     /**
@@ -46,17 +46,37 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Company $company)
+    public function edit(string $slug, CompanyService $companyService)
     {
-        //
+        $company = $companyService->find($slug);
+
+        return view('admin.settings.company.edit', compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, CompanyService $companyService)
     {
-        //
+        $slug = strtolower(str_replace(" ", "-", $request->name));
+
+        $companyData = [
+            'name' => $request->name,
+            'slug' => $slug,
+            'currencyId' => $request->currencyId, 
+            'phone' => $request->phone, 
+            'email' => $request->email, 
+            'website' => $request->website, 
+            'taxid' => $request->taxid, 
+            'logo' => $request->logo, 
+            'street' => $request->street, 
+            'cityId' => $request->cityIf, 
+            'countryId' => $request->countryId,
+        ];
+
+        $company = $companyService->update($companyData);
+
+        return redirect()->route('company.index');
     }
 
     /**

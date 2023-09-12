@@ -14,6 +14,14 @@ class CompanyService
         return $companies;
     }
 
+    // find a specific company
+    public function find(string $slug)
+    {
+        $company = Company::where('slug', $slug)->first();
+
+        return $company;
+    }
+
     // show selected company
     public function show(string $slug)
     {
@@ -31,8 +39,14 @@ class CompanyService
     }
 
     // modify existing company details
-    public function update(array $companyData, Company $company)
+    public function update(array $companyData)
     {
+        // $company->update($companyData);
+
+        $company = Company::find('slug', $companyData['slug']);
+
+        dd($companyData['slug']);
+
         $company->update($companyData);
 
         return $company;

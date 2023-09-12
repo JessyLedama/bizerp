@@ -88,6 +88,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
 
             Route::get('create', [CurrencyController::class, 'create'])->name('currency.create');
 
+            Route::get('edit', [CurrencyController::class, 'edit'])->name('currency.edit');
+
             Route::post('store', [CurrencyController::class, 'store'])->name('currency.store');
         });
 
@@ -97,7 +99,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
 
             Route::get('create', [CompanyController::class, 'create'])->name('company.create');
 
+            Route::get('edit/{slug}', [CompanyController::class, 'edit'])->name('company.edit');
+
             Route::post('store', [CompanyController::class, 'store'])->name('company.store');
+
+            Route::post('update', [CompanyController::class, 'update'])->name('company.update');
         });
     });
 });
