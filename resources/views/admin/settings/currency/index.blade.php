@@ -13,17 +13,12 @@
 
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         @if(isset($currencies))
-                            @foreach($currencies as $currency)
                             <table class="table">
                                 <thead class="thead">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">City</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Website</th>
-                                        <th scope="col">Country</th>
+                                        <th scope="col">Sign</th>
                                     </tr>
                                 </thead>
 
@@ -33,28 +28,30 @@
 
                                 <tbody>
                                     @foreach($currencies as $currency)
-                                    <tr>
-                                        @for($i = $counter; $i == count($currencies); $i++)
-                                            <th scope="row">{{ $i }}</th>
-                                        @endfor
+                                        <tr>
+                                            @for($i = $counter; $i == count($currencies); $i++)
+                                                <th scope="row">
+                                                    {{ $counter }}
+                                                </th>
+                                            @endfor
 
-                                        <td> {{ $currency->name }} </td>
-                                        <td> {{ $currency->cityId }} </td>
-                                        <td> {{ $currency->phone }} </td>
-                                        <td> {{ $currency->email }} </td>
-                                        <td> {{ $currency->website }} </td>
-                                        <td> {{ $currency->countryId }} </td>
+                                            <td scope="row"> 
+                                                {{ $currency->name }} 
+                                            </td>
 
-                                        <td>
-                                            <a href="{{ route('currency.edit', $currency->slug) }}">
-                                                <span> Edit </span>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                            <td scope="row"> 
+                                                {{ $currency->sign}} 
+                                            </td>
+
+                                            <td scope="row">
+                                                <a href="{{ route('currency.edit', $currency->slug) }}">
+                                                    <span> Edit </span>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            @endforeach
                         @else
                             <div>
                                 No Currencies, create some!
