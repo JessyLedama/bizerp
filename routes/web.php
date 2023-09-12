@@ -8,6 +8,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
+use App\Http\Controllers\Admin\AppsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
         Route::get('create', [ProductTypeController::class, 'create'])->name('productTypes.create');
 
         Route::post('store', [ProductTypeController::class, 'store'])->name('productTypes.store');
+    });
+
+    // APPS
+    Route::prefix('apps')->group(function () {
+        Route::get('index', [AppsController::class, 'index'])->name('apps.index');
     });
 });
 
