@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
                     <x-nav-link :active="request()->routeIs('apps.index')">
-                        {{ url()->current() }} {{ $currentURL }}
+                        {{ url()->current() }}
                     </x-nav-link>
 
                     <!-- Apps Dropdown -->
@@ -62,6 +62,7 @@
                         </div>
                     </div>
 
+            @auth
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -95,6 +96,7 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+            @endauth
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -116,6 +118,7 @@
             </x-responsive-nav-link>
         </div>
 
+        @auth()
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
@@ -140,5 +143,6 @@
                 </form>
             </div>
         </div>
+        @endauth
     </div>
 </nav>

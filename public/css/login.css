@@ -1,0 +1,9 @@
+.login-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20% 0 20%;
+}
+
+.form {
+    width: 100%;
+}

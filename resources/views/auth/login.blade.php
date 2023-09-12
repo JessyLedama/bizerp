@@ -1,13 +1,19 @@
-<x-guest-layout>
+@extends('layouts.guest')
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+<title> Login | {{config('app.name')}}</title>
+
+@section('content')
+<section class="py-12 login-form">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form class="form" method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <label for="email" :value="__('Email')"> Email </label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -44,4 +50,5 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</section>
+@endsection
