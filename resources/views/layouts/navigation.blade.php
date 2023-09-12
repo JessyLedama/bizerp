@@ -10,11 +10,17 @@
                     </a>
                 </div>
 
+                <!-- Get the name of the current page -->
+                <?php 
+                    $url = url()->current();
+                    $urlData = explode("/", $url);
+                ?>
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
                     <x-nav-link :active="request()->routeIs('apps.index')">
-                        {{ url()->current() }}
+                        {{ strtoupper(end($urlData))}}
                     </x-nav-link>
 
                     <!-- Apps Dropdown -->

@@ -19,8 +19,8 @@ class NavComposer
             'products' => Product::all(),
         ];
 
-        $currentURL = url()->current();
+        $currentURL = Route::current()->getName();
 
-        $view->with('navLinks', $navLinks);
+        $view->with('navLinks', $navLinks, $currentURL);
     }
 }
