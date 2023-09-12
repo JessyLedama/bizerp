@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\AppsController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +77,28 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
     // APPS
     Route::prefix('apps')->group(function () {
         Route::get('index', [AppsController::class, 'index'])->name('apps.index');
+    });
+
+    // SETTINGS
+    Route::prefix('settings')->group(function() {
+
+        // Currency Details
+        Route::prefix('currency')->group(function () {
+            Route::get('index', [CurrencyController::class, 'index'])->name('currency.index');
+
+            Route::get('create', [CurrencyController::class, 'create'])->name('currency.create');
+
+            Route::post('store', [CurrencyController::class, 'store'])->name('currency.store');
+        });
+
+        // Company Details
+        Route::prefix('company')->group(function () {
+            Route::get('index', [CompanyController::class, 'index'])->name('company.index');
+
+            Route::get('create', [CompanyController::class, 'create'])->name('company.create');
+
+            Route::post('store', [CompanyController::class, 'store'])->name('company.store');
+        });
     });
 });
 

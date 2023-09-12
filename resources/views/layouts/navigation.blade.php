@@ -7,9 +7,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
+                    <img src="" class="menu">
                 </div>
 
                 <!-- Get the name of the current page -->
@@ -62,12 +60,15 @@
                                 <x-dropdown-link :href="route('sales.index')">
                                     Inventory
                                 </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                    {{ __('Settings') }}
+                                </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
-
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
 
                         
                         <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
