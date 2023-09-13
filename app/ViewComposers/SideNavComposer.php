@@ -8,22 +8,25 @@ use App\Models\Product;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 
-class NavComposer 
+
+class SideNavComposer 
 {
     
     // get all variables for navbar
     public function compose(View $view)
     {
-        $navLinks = [
+        $sideNavLinks = [
             'products' => Product::all(),
         ];
 
         $currentURL = Route::current()->getName();
-        $urlData = explode(".", $currentURL);
 
-        $view->with('currentURL', $currentURL)
-            ->with('navLinks', $navLinks)
-            ->with('urlData', $urlData);
+        $routes = Route::getRoutes();
+
+        dd($routes);
+
+        $view->with('navLinks', $navLinks, $currentURL);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AppsController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +66,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
         Route::post('store', [ProductController::class, 'store'])->name('products.store');
     });
 
-    // PRODUCT TYPEs
+    // PRODUCT TYPES
     Route::prefix('product-types')->group(function () {
         Route::get('index', [ProductTypeController::class, 'index'])->name('productTypes.index');
 
@@ -81,6 +82,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
 
     // SETTINGS
     Route::prefix('settings')->group(function() {
+
+        Route::get('index', [SettingsController::class, 'index'])->name('settings.index');
 
         // Currency Details
         Route::prefix('currency')->group(function () {
@@ -104,6 +107,19 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
             Route::post('store', [CompanyController::class, 'store'])->name('company.store');
 
             Route::post('update', [CompanyController::class, 'update'])->name('company.update');
+        });
+
+        // Users Details
+        Route::prefix('users')->group(function () {
+            Route::get('index', [UserController::class, 'index'])->name('users.index');
+
+            Route::get('create', [UserController::class, 'create'])->name('users.create');
+
+            Route::get('edit/{slug}', [UserController::class, 'edit'])->name('users.edit');
+
+            Route::post('store', [UserController::class, 'store'])->name('users.store');
+
+            Route::post('update', [UserController::class, 'update'])->name('users.update');
         });
     });
 });

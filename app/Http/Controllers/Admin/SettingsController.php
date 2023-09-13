@@ -11,6 +11,16 @@ class SettingsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index(CompanyService $companyService)
+    {
+        $companies = $companyService->all();    
+
+        return view('admin.settings.index', compact('companies'));
+    }
+    
+    /**
+     * Display Company Details
+     */
     public function company()
     {
         $companies = $companyService->all();
