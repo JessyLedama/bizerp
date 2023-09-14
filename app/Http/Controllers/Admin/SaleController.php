@@ -53,7 +53,7 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        //
+        return view('admin.status.edit');
     }
 
     /**

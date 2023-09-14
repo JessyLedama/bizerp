@@ -44,9 +44,16 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
 
     Route::get('roles', [RoleController::class, 'index'])->name('role.index');
     
-    Route::get('statuses', [StatusController::class, 'index'])->name('status.index');
+    
     
     Route::get('users', [UserTypeController::class, 'users'])->name('users.index');
+
+    // STATUS
+    Route::prefix('status')->group(function() {
+        Route::get('index', [StatusController::class, 'index'])->name('status.index');
+
+        Route::get('edit/{slug}', [StatusController::class, 'edit'])->name('status.edit');
+    });
 
     // SALES
     Route::prefix('sales')->group(function () {
