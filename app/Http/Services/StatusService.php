@@ -21,7 +21,7 @@ class StatusService
      *  Get active status
      *  Returns $active or null
      */
-    public function active()
+    public static function active()
     {
         $active = Status::where('name', 'Active')->first();
 
@@ -32,7 +32,7 @@ class StatusService
      *  Get inactive status
      *  Returns $inactive or null
      */
-    public function inactive()
+    public static function inactive()
     {
         $inactive = Status::where('name', 'Inactive')->first();
 

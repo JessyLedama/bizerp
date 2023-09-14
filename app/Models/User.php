@@ -29,6 +29,7 @@ class User extends Authenticatable
         'roleId',
         'status',
         'photo',
+        'userTypeId',
     ];
 
     /**
@@ -50,4 +51,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // a user belongsTo a status
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'id');
+    }
+
+    // a user belongsTo a userType
+    public function userType()
+    {
+        return $this->belongsTo(UserType::class, 'id');
+    }
 }

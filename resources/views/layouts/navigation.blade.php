@@ -52,7 +52,7 @@
                                 <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                     {{ __('Dashboard') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                <x-dropdown-link :href="route('settings.index')" :active="request()->routeIs('settings.index')">
                                     {{ __('Settings') }}
                                 </x-dropdown-link>
                             </x-slot>

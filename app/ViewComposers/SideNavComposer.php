@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Route;
 
 
 class SideNavComposer 
@@ -22,11 +21,10 @@ class SideNavComposer
         ];
 
         $currentURL = Route::current()->getName();
+        $urlData = explode(".", $currentURL);
 
-        $routes = Route::getRoutes();
 
-        dd($routes);
-
-        $view->with('navLinks', $navLinks, $currentURL);
+        $view->with('sideNavLinks', $sideNavLinks)
+            ->with('urlData', $urlData);
     }
 }

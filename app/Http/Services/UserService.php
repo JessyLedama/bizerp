@@ -3,8 +3,8 @@
 namespace App\Http\Services;
 
 use App\Models\User;
-use App\Https\Services\StatusService;
-use App\Https\Services\UserTypeService;
+use App\Http\Services\StatusService;
+use App\Http\Services\UserTypeService;
 use App\Models\Status;
 use App\Models\UserType;
 
@@ -33,15 +33,16 @@ class UserService {
     }
 
     /**
-     *  Get all (active) users.
+     *  Get all users with their statuses.
      *  Returns  $users
      */
-    public function all(StatusService $statusService)
+    public function all()
     {
-        $active = $statusService->active();
+        // $active = StatusService::active();
 
-        $users = User::where('statusId', $active->id)->get();
-
+        // $users = User::where('statusId', $active->id)->get();
+        $users = User::with('status')->get();
+        
         return $users;
     }
 
