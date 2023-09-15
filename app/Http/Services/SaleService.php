@@ -10,7 +10,10 @@ class SaleService
     // get all sales
     public function all()
     {
-        $sales = Sale::all();
+        $sales = Sale::with('status')
+            ->with('customer')
+            ->with('salesperson')
+            ->get();
 
         return $sales;
     }

@@ -12,4 +12,22 @@ class Sale extends Model
     protected $fillable = [
         'number', 'customerId', 'products', 'salespersonId', 'statusId', 
     ];
+
+    // a sale order belongsTo a status
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'id');
+    }
+
+    // a sale order belongsTo user (of type customer)
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
+
+    // a sale order belongsTo salesperson
+    public function salesperson()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 }

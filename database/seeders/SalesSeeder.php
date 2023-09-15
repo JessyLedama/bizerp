@@ -19,7 +19,7 @@ class SalesSeeder extends Seeder
                 'customerId' => '2',
                 'products' => 'a lot of products',
                 'salespersonId' => '1',
-                'statusId' => '1'
+                'statusId' => '1',
             ],
 
             [
@@ -27,31 +27,7 @@ class SalesSeeder extends Seeder
                 'customerId' => '2',
                 'products' => 'a lot of products',
                 'salespersonId' => '1',
-                'statusId' => '1'
-            ],
-
-            [
-                'number' => 'SO003',
-                'customerId' => '2',
-                'products' => 'a lot of products',
-                'salespersonId' => '1',
-                'statusId' => '1'
-            ],
-
-            [
-                'number' => 'SO004',
-                'customerId' => '2',
-                'products' => 'a lot of products',
-                'salespersonId' => '1',
-                'statusId' => '1'
-            ],
-
-            [
-                'number' => 'SO005',
-                'customerId' => '2',
-                'products' => 'a lot of products',
-                'salespersonId' => '1',
-                'statusId' => '1'
+                'statusId' => '1',
             ],
         ];
 

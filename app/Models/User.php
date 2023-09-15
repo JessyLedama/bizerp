@@ -63,4 +63,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserType::class, 'id');
     }
+
+    // a user can hasMany sale orders
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'customerId');
+    }
 }

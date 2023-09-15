@@ -7,15 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\UserType;
 use App\Models\User;
+use App\Http\Services\SaleService;
 
 class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SaleService $saleService)
     {
-        $sales = Sale::all();
+        $sales = $saleService->all();
 
         return view('admin.modules.sales.index', compact('sales'));
     }

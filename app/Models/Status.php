@@ -18,4 +18,10 @@ class Status extends Model
     {
         return $this->hasMany(User::class, 'status');
     }
+
+    // a status hasMany sales
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'statusId');
+    }
 }

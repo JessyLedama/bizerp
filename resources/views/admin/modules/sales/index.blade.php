@@ -40,11 +40,16 @@
                                                 </td>
                                                 
                                                 <td> 
-                                                    {{ $sale->customerId }} 
+                                                    {{ $sale->Customer->firstName }} 
+
+                                                    {{ $sale->Customer->lastName }} 
                                                 </td>
                                                 
                                                 <td> 
-                                                    {{ $sale->salespersonId }} 
+                                                    {{ $sale->Salesperson->firstName }} 
+
+
+                                                    {{ $sale->Salesperson->lastName }}  
                                                 </td>
                                                 
                                                 <td> 
@@ -52,7 +57,7 @@
                                                 </td>
                                                 
                                                 <td> 
-                                                    {{ $sale->statusId }} 
+                                                    {{ $sale->status->name }}
                                                 </td>
                                             </tr>
                                         @endforeach
