@@ -3,6 +3,10 @@
     padding-bottom: 0px !important;
 }
 
+.content{
+    padding: 20px 5px 5px 5px;
+}
+
 .dashboard {
     padding: 10px 0 10px 10px;
 }
@@ -41,6 +45,22 @@
     width: 150px;
     margin: 0 0 0 5%;
     height: auto;
+}
+
+.create-btn{
+    background-color: #007bff !important;
+    margin: 10px 0 0 0;
+}
+
+.align-right{
+    margin: 0 0 0 75%;
+}
+
+.text-input{
+    border: none;
+    background-color: #eee !important;
+    border-radius: 10px !important;
+    box-shadow: 5px 3px 3px 1px rgba(0, 0, 0, 0.4);
 }
 
 /* Media Queries for mobile view */

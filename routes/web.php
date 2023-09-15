@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserTypeController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\StatusController;
+use App\Http\Controllers\Admin\StatusController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
@@ -127,6 +127,10 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
             Route::get('index', [StatusController::class, 'index'])->name('status.index');
 
             Route::get('edit/{slug}', [StatusController::class, 'edit'])->name('status.edit');
+
+            Route::get('create', [StatusController::class, 'create'])->name('status.create');
+
+            Route::post('store', [StatusController::class, 'store'])->name('status.store');
         });
     });
 });

@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Status;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\StatusService;
 
 class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(StatusService $statusService)
     {
-        $statuses = Status::all();
+        $statuses = $statusService->all();
 
         return view('admin.status.index', compact('statuses'));
     }
@@ -22,15 +24,21 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.status.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, StatusService $statusService)
     {
-        //
+        $statusData = [
+            'name' => $request->name,
+        ];
+
+        $statusService->store($statusData);
+
+        return redirect()->route('status.index');
     }
 
     /**
