@@ -41,6 +41,7 @@
                                     <tr>
                                         <!-- <th scope="col">#</th> -->
                                         <th scope="col">Name</th>
+                                        <th scope="col">ID Number</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">User Type</th>
@@ -59,6 +60,10 @@
                                                 {{ $user->firstName }} 
                                                 {{ $user->lastName }} 
                                             </td>
+
+                                            <td> 
+                                                {{ $user->identificationNumber }} 
+                                            </td>
                                             
                                             <td> 
                                                 {{ $user->phone }} 
@@ -69,11 +74,11 @@
                                             </td>
                                             
                                             <td> 
-                                                {{ $user->orderTotal }} 
+                                                {{ $user->userType }}
                                             </td>
                                             
                                             <td> 
-                                                {{ $user->Status->name }}
+                                                {{ $user->Status}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -90,7 +95,7 @@
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                             <div class="our-team">
                                                 <div class="picture">
-                                                    <img class="img-fluid" src="{{ asset('/storage'.$user->photo) }}">
+                                                    <img class="img-fluid" src="{{ asset('/storage/'.$user->photo) }}">
                                                 </div>
 
                                                 <div class="team-content">

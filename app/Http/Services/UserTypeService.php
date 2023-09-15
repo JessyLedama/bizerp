@@ -9,7 +9,7 @@ class UserTypeService
      *  Get all user types
      *  Return $userTypes
      */
-    public function all()
+    public static function all()
     {
         $userTypes = UserType::all();
 
@@ -20,7 +20,7 @@ class UserTypeService
      *  Get vendor user type
      *  Return $vendor
      */
-    public function vendor()
+    public static function vendor()
     {
         $vendor = UserType::where('name', 'Vendor')->first();
 
@@ -31,7 +31,7 @@ class UserTypeService
      *  Get customer userType
      *  Return $customer
      */
-    public function customer()
+    public static function customer()
     {
         $customer = UserType::where('name', 'Customer')->first();
 
@@ -42,7 +42,7 @@ class UserTypeService
      *  Get internal user userType
      *  Return $internalUser
      */
-    public function internalUser()
+    public static function internalUser()
     {
         $internalUser = UserType::where('name', 'Internal User')->first();
 

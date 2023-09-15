@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserTypeController;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Admin\StatusController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\ProductController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\Settings\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
-    Route::get('user-types', [UserTypeController::class, 'index'])->name('userType.index');
+    // Route::get('user-types', [UserTypeController::class, 'index'])->name('userType.index');
 
     Route::get('roles', [RoleController::class, 'index'])->name('role.index');
     
@@ -122,6 +122,19 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
             Route::post('update', [UserController::class, 'update'])->name('users.update');
         });
 
+        // UserType Details
+        Route::prefix('user-types')->group(function () {
+            Route::get('index', [UserTypeController::class, 'index'])->name('userTypes.index');
+
+            Route::get('create', [UserTypeController::class, 'create'])->name('userTypes.create');
+
+            Route::get('edit/{slug}', [UserTypeController::class, 'edit'])->name('userTypes.edit');
+
+            Route::post('store', [UserTypeController::class, 'store'])->name('userTypes.store');
+
+            Route::post('update', [UserTypeController::class, 'update'])->name('userTypes.update');
+        });
+
         // STATUS
         Route::prefix('status')->group(function() {
             Route::get('index', [StatusController::class, 'index'])->name('status.index');
@@ -131,6 +144,17 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
             Route::get('create', [StatusController::class, 'create'])->name('status.create');
 
             Route::post('store', [StatusController::class, 'store'])->name('status.store');
+        });
+
+        // ROLES
+        Route::prefix('roles')->group(function() {
+            Route::get('index', [RoleController::class, 'index'])->name('roles.index');
+
+            Route::get('edit/{slug}', [RoleController::class, 'edit'])->name('roles.edit');
+
+            Route::get('create', [RoleController::class, 'create'])->name('roles.create');
+
+            Route::post('store', [RoleController::class, 'store'])->name('roles.store');
         });
     });
 });

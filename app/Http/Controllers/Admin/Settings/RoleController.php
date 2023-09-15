@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Settings;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\RoleService;
 
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(RoleService $roleService)
     {
-        $roles = Role::all();
+        $roles = $roleService->all();
 
-        return view('admin.roles.index', compact('roles'));
+        return view('admin.settings.roles.index', compact('roles'));
     }
 
     /**
@@ -22,7 +24,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.settings.roles.create');
     }
 
     /**

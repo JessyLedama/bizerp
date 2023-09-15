@@ -1,3 +1,0 @@
-<section>
-{{ count($userTypes) }}
-</section>

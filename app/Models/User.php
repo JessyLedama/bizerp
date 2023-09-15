@@ -29,7 +29,6 @@ class User extends Authenticatable
         'roleId',
         'status',
         'photo',
-        'userTypeId',
     ];
 
     /**

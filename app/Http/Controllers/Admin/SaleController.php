@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\UserType;
 use App\Models\User;
 use App\Http\Services\SaleService;
+use App\Http\Services\UserService;
 
 class SaleController extends Controller
 {
@@ -24,11 +25,10 @@ class SaleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(UserService $userService)
     {
-        $customerType = UserType::where('name', 'Customer')->first();
-
-        $customers = User::where('typeId', $customerType->id)->get();
+        
+        $customers = $userService->customers();
 
         return view('admin.modules.sales.create', compact('customers'));
     }

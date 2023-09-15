@@ -38,10 +38,9 @@ class UserService {
      */
     public function all()
     {
-        // $active = StatusService::active();
-
-        // $users = User::where('statusId', $active->id)->get();
-        $users = User::with('status')->get();
+        $users = User::with('status')
+                    ->with('userType')
+                    ->get();
         
         return $users;
     }
@@ -50,12 +49,16 @@ class UserService {
      *  Get all (active) customers.
      *  Returns  $customers
      */
-    public function customers(StatusService $statusService, UserTypeService $userTypeService)
+    public function customers()
     {
-        $active = $statusService->active();
-        $customerType = $userTypeService->customer();
+        $active = StatusService::active();
+        $customerType = UserTypeService::customer();
 
-        $customers = User::where('statusId', $active->id)->where('typeId', $customerType->id)->get();
+        $customers = User::where('statusId', $active->id)
+                        ->where('typeId', $customerType->id)
+                        ->get();
+
+                        dd($customerType->id);
 
         return $customers;
     }

@@ -3,42 +3,34 @@
 
 @section('content')
     <section>
+        @include('layouts.side-nav')
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
                     <div class="nav-headings">
-                        <a href="#" class="menu-item font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ __('Menu 1') }}
-                        </a>
-
-                        <a href="#" class="menu-item font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ __('Menu 2') }}
+                        <a href="{{ route('sales.index') }}" class="menu-item font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                            {{ __('Back To List') }}
                         </a>
                     </div>
 
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <form action="{{ route('sales.store') }}" method="post">
+                        <form class="product-form" action="{{ route('status.store') }}" method="post">
                             @csrf 
 
-                            <label for="customer"> Customer </label> <br />
-
+                            <label for="name"> Customer Name </label> <br />
                             <select name="customerId" id="">
-                                <option value="select"> 
-                                    Choose a customer 
-                                </option>
+                                <option value=""> Select Customer </option>
                                 @foreach($customers as $customer)
-                                    <option class="" type="text" name="customerId">
-                                        {{ $customer->firstName }}  
-                                        {{ $customer->lastName }}  
-                                    </option> <br />
+                                    <option value="{{ $customer->firstName }} {{ $customer->lastName }}"> 
+                                        {{ $customer->firstName }} 
+                                        {{ $customer->lastName }} 
+                                    </option>
                                 @endforeach
-                            </select><br/>
-                            
+                            </select>
+                            <input class="text-input" type="text" name="name" placeholder="Status Name"><br />
 
-                            <label for="products"> Products </label><br />
-
-                            <input class="button btn btn-primary" type="submit" value="Create Sale">
+                            <input class="btn btn-primary create-btn" type="submit" value="Create Product">
                         </form>
                     </div>
                 </div>

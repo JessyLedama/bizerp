@@ -1,31 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\UserType;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Http\Services\UserTypeService;
 
 class UserTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(UserTypeService $userTypeService)
     {
-        $userTypes = UserType::all();
+        $userTypes = $userTypeService->all();
 
-        return view('admin.userTypes.index', compact('userTypes'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function users()
-    {
-        $users = User::all();
-
-        return view('admin.users.index', compact('users'));
+        return view('admin.settings.userTypes.index', compact('userTypes'));
     }
 
     /**
@@ -33,7 +25,7 @@ class UserTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.settings.userTypes.create');
     }
 
     /**
