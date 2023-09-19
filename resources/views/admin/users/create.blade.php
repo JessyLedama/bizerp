@@ -53,7 +53,7 @@
 
                             <input class="text-input" type="password" name="password" id="" placeholder="Password"> <br />
 
-                            <input class="btn btn-primary create-btn" type="submit" value="Create Product">
+                            <input class="btn btn-primary create-btn" type="submit" value="Create User">
                         </form>
                     </div>
                 </div>

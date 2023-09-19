@@ -27,7 +27,7 @@ class User extends Authenticatable
         'kraPin',
         'typeId',
         'roleId',
-        'status',
+        'statusId',
         'photo',
     ];
 

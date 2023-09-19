@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('typeId');
             $table->string('roleId');
-            $table->string('status');
+            $table->string('statusId');
             $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();

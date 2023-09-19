@@ -21,6 +21,14 @@ class StatusSeeder extends Seeder
             [
                 'name' => 'Inactive',
             ],
+
+            [
+                'name' => 'Draft',
+            ],
+
+            [
+                'name' => 'Posted',
+            ],
         ];
 
         $statuses = Status::all();

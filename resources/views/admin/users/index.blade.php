@@ -74,11 +74,11 @@
                                             </td>
                                             
                                             <td> 
-                                                {{ $user->userType }}
+                                                {{ $user->userType->name }} 
                                             </td>
                                             
                                             <td> 
-                                                {{ $user->Status}}
+                                                {{ $user->status->name }} 
                                             </td>
                                         </tr>
                                     @endforeach

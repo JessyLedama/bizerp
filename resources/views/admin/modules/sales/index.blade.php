@@ -12,6 +12,7 @@
                     <a href="{{ route('sales.create') }}" class="new-record dashboard font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                         {{ __('New') }}
                     </a>
+                    
                     @if(isset($sales))
                     <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
                         <li class="nav-item">
@@ -74,7 +75,7 @@
                                             </td>
                                             
                                             <td> 
-                                                {{ $sale->Status->name }}
+                                                {{ $sale->status->name }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -96,12 +97,12 @@
                                                         {{ $sale->number }} 
                                                     </h3>
                                                     <h4 class="name">
-                                                        {{ $sale->customer->firstName }}
-                                                        {{ $sale->customer->firstName }}
+                                                        {{ $sale->customer }}
+                                                        {{ $sale->customer }}
                                                     </h4>
                                                     <h4 class="title">
-                                                        {{ $sale->salesperson->firstName }} 
-                                                        {{ $sale->salesperson->lastName }} 
+                                                        {{ $sale->salesperson }} 
+                                                        {{ $sale->salesperson }} 
                                                     </h4>
 
                                                     <h4 class="title">

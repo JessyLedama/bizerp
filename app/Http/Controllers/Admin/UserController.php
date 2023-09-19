@@ -8,6 +8,7 @@ use App\Http\Services\UserService;
 use App\Http\Services\RoleService;
 use App\Http\Services\UserTypeService;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Services\StatusService;
 
 class UserController extends Controller
 {
@@ -39,6 +40,8 @@ class UserController extends Controller
     {
         // get user photo
         $photo = $request->file('photo')->store('users', ['disk' => 'public']);
+        
+        $activeId = strval(StatusService::active()->id);
 
         $userData = [
             'firstName' => $request->firstName,
@@ -50,9 +53,11 @@ class UserController extends Controller
             'kraPin' => $request->kraPin,
             'typeId' => $request->typeId,
             'roleId' => $request->roleId,
-            'status' => '1',
+            'statusId' => $activeId,
             'photo' => $photo,
         ];
+
+        // dd($userData);
 
         $userService->store($userData);
 

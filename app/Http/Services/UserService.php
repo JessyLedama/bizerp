@@ -16,7 +16,19 @@ class UserService {
      */
     public function store(array $userData)
     {
-        $user = User::create($userData);
+        $user = User::create([
+            'firstName' => $userData['firstName'],
+            'lastName' => $userData['lastName'],
+            'email' => $userData['email'],
+            'phone' => $userData['phone'],
+            'identificationNumber' => $userData['identificationNumber'],
+            'password' => $userData['password'],
+            'kraPin' => $userData['kraPin'],
+            'typeId' => $userData['typeId'],
+            'roleId' => $userData['roleId'],
+            'statusId' => $userData['statusId'],
+            'photo' => $userData['photo'],
+        ]);
 
         return $user;
     }
@@ -56,9 +68,7 @@ class UserService {
 
         $customers = User::where('statusId', $active->id)
                         ->where('typeId', $customerType->id)
-                        ->get();
-
-                        dd($customerType->id);
+                        ->get();    
 
         return $customers;
     }

@@ -40,6 +40,28 @@ class StatusService
     }
 
     /**
+     *  Get draft status
+     *  Returns $draft or null
+     */
+    public static function draft()
+    {
+        $draft = Status::where('name', 'Draft')->first();
+
+        return $draft;
+    }
+
+    /**
+     *  Get posted status
+     *  Returns $posted or null
+     */
+    public static function posted()
+    {
+        $posted = Status::where('name', 'Posted')->first();
+
+        return $posted;
+    }
+
+    /**
      *  Store a new status.
      *  Returns the created status as $status
      */
