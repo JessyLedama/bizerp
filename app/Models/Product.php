@@ -12,4 +12,10 @@ class Product extends Model
     protected $fillable = [
         'name', 'type', 'price', 'vendorId', 'statusId', 'buyable', 'sellable', 'description',
     ];
+
+    // products belongTo a sale order
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, 'products');
+    }
 }

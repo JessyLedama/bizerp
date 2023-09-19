@@ -12,9 +12,9 @@ class ProductTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ProductTypeService $productTypeService)
+    public function index()
     {
-        $productTypes = $productTypeService->all();
+        $productTypes = ProductTypeService::all();
 
         return view('admin.modules.productTypes.index', compact('productTypes'));
     }

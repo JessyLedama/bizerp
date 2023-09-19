@@ -66,15 +66,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
         Route::post('store', [ProductController::class, 'store'])->name('products.store');
     });
 
-    // PRODUCT TYPES
-    Route::prefix('product-types')->group(function () {
-        Route::get('index', [ProductTypeController::class, 'index'])->name('productTypes.index');
-
-        Route::get('create', [ProductTypeController::class, 'create'])->name('productTypes.create');
-
-        Route::post('store', [ProductTypeController::class, 'store'])->name('productTypes.store');
-    });
-
     // APPS
     Route::prefix('apps')->group(function () {
         Route::get('index', [AppsController::class, 'index'])->name('apps.index');
@@ -155,6 +146,15 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function(){
             Route::get('create', [RoleController::class, 'create'])->name('roles.create');
 
             Route::post('store', [RoleController::class, 'store'])->name('roles.store');
+        });
+
+        // PRODUCT TYPES
+        Route::prefix('product-types')->group(function () {
+            Route::get('index', [ProductTypeController::class, 'index'])->name('productTypes.index');
+
+            Route::get('create', [ProductTypeController::class, 'create'])->name('productTypes.create');
+
+            Route::post('store', [ProductTypeController::class, 'store'])->name('productTypes.store');
         });
     });
 });

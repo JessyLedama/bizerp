@@ -10,7 +10,7 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number', 'customerId', 'products', 'salespersonId', 'statusId', 
+        'number', 'customerId', 'products', 'salespersonId', 'statusId', 'orderTotal',
     ];
 
     // a sale order belongsTo a status
@@ -29,5 +29,11 @@ class Sale extends Model
     public function salesperson()
     {
         return $this->belongsTo(User::class, 'id');
+    }
+
+    // a sale order hasMany products
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'id');
     }
 }

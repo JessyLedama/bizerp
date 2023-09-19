@@ -19,19 +19,21 @@ class SalesSeeder extends Seeder
 
         $salesData = [
             [
-                'number' => 'SO001',
+                'number' => '001',
                 'customerId' => '2',
                 'products' => 'a lot of products',
                 'salespersonId' => '1',
                 'statusId' => $draftId,
+                'orderTotal' => '200',
             ],
 
             [
-                'number' => 'SO002',
+                'number' => '002',
                 'customerId' => '2',
                 'products' => 'a lot of products',
                 'salespersonId' => '1',
                 'statusId' => $draftId,
+                'orderTotal' => '200',
             ],
         ];
 

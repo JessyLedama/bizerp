@@ -57,7 +57,7 @@
                                     @foreach($sales as $sale)
                                         <tr>
                                             <td> 
-                                                {{ $sale->number }} 
+                                                SO-{{ $sale->number }} 
                                             </td>
                                             
                                             <td> 

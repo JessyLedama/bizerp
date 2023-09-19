@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Http\Services\StatusService;
 
 class UserSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $activeStatus = StatusService::active();
+
         $usersData = [
             [
                 'firstName' => 'Admin',
@@ -24,7 +27,7 @@ class UserSeeder extends Seeder
                 'kraPin' => 'hwhdhowodwidwohdwdhitr',
                 'typeId' => '3',
                 'roleId' => '1',
-                'statusId' => '1',
+                'statusId' => $activeStatus->id,
                 'photo' => '/public/images/user.png',
                 'password' => Hash::make('password'),
             ],
@@ -38,7 +41,7 @@ class UserSeeder extends Seeder
                 'kraPin' => 'hdfhdfuwifwoeifwieu',
                 'typeId' => '3',
                 'roleId' => '2',
-                'statusId' => '1',
+                'statusId' => $activeStatus->id,
                 'photo' => '/public/images/user.png',
                 'password' => Hash::make('password'),
             ],

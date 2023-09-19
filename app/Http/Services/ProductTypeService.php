@@ -7,7 +7,7 @@ use App\Models\ProductType;
 class ProductTypeService {
     
     // get all product types
-    public function all()
+    public static function all()
     {
         $productTypes = ProductType::all();
 
@@ -15,15 +15,17 @@ class ProductTypeService {
     }
 
     // create a new product type
-    public function store(array $productTypeData)
+    public static function store(array $productTypeData)
     {
-        $productType = ProductType::create($productTypeData);
+        $productType = ProductType::create([
+            'name' => $productTypeData['name'],
+        ]);
 
         return $productType;
     }
 
     // modify an existing product type
-    public function update(array $productTypeData)
+    public static function update(array $productTypeData)
     {
         $productType->update($productTypeData);
 

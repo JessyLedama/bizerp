@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Product;
 use App\Models\Sale;
+use App\Http\Services\StatusService;
 
 class SaleService 
 {
@@ -21,7 +22,27 @@ class SaleService
     // store a new sale
     public function store(array $saleData)
     {
-        $sale = Sale::create($saleData);
+        // compute new sale order number. last so number + 1.
+        $lastSaleNumber = Sale::latest()->first('number') ?? ['number'=> '000'];
+
+        $newSaleNumber = $lastSaleNumber['number'] + 1;
+
+        $newSaleNumber = sprintf("%03d", $newSaleNumber);
+
+        // draft status
+        $draftStatus = StatusService::draft()->id;
+
+        // dd($draftStatus);
+
+        // create a new SO in the db.
+        $sale = Sale::create([
+            'number' => $newSaleNumber, 
+            'customerId' => $saleData['customerId'], 
+            'products' => $saleData['products'], 
+            'salespersonId' => $saleData['salespersonId'], 
+            'statusId' => $draftStatus, 
+            'orderTotal' => $saleData['orderTotal'],
+        ]);
 
         return $sale;
     }

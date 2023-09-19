@@ -9,6 +9,9 @@ use App\Models\UserType;
 use App\Models\User;
 use App\Http\Services\SaleService;
 use App\Http\Services\UserService;
+use App\Http\Services\StatusService;
+use App\Http\Services\ProductService;
+use Auth;
 
 class SaleController extends Controller
 {
@@ -25,20 +28,37 @@ class SaleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(UserService $userService)
+    public function create(UserService $userService, ProductService $productService)
     {
         
         $customers = $userService->customers();
+        $products = $productService->all();
 
-        return view('admin.modules.sales.create', compact('customers'));
+        return view('admin.modules.sales.create', compact('customers', 'products'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, SaleService $saleService)
     {
-        //
+        $products = $request->products;
+        $draftStatusId= strval(StatusService::draft()->id);
+        $orderTotal = '200';
+
+        $saleData = [
+            'number' => 'SO006', 
+            'customerId' => $request->customerId, 
+            'products' => $products, 
+            'salespersonId' => Auth::id(), 
+            'statusId' => $draftStatusId, 
+            'orderTotal' => $orderTotal,
+        ];
+
+
+        $saleService->store($saleData);
+
+        return redirect()->route('sales.index');
     }
 
     /**
